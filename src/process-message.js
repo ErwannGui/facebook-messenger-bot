@@ -13,6 +13,7 @@ const config = {
     client_email: process.env.DIALOGFLOW_CLIENT_EMAIL
   }
 };
+console.log("Config : "config);
 
 const sessionClient = new dialogflow.SessionsClient(config);
 
@@ -23,7 +24,7 @@ const sessionPath = sessionClient.sessionPath(projectId, sessionId);
 const { FACEBOOK_ACCESS_TOKEN } = process.env;
 
 const sendTextMessage = (userId, text) => {
-  console.log(userId + text);
+  console.log("Content : "userId + text);
   return fetch(
     `https://graph.facebook.com/v2.6/me/messages?access_token=${FACEBOOK_ACCESS_TOKEN}`,
     {
@@ -62,7 +63,7 @@ module.exports = (event) => {
     .detectIntent(request)
     .then(responses => {
       const result = responses[0].queryResult;
-      console.log(result);
+      console.log("Result : "result);
       return sendTextMessage(userId, result.fulfillmentText);
     })
     .catch(err => {
