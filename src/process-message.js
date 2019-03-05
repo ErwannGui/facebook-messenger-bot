@@ -13,7 +13,8 @@ const config = {
     client_email: process.env.DIALOGFLOW_CLIENT_EMAIL
   }
 };
-console.log("Config : "+config);
+
+console.log(config.credentials.client_email);
 
 const sessionClient = new dialogflow.SessionsClient(config);
 
