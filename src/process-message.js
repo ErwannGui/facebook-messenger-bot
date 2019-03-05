@@ -9,12 +9,10 @@ const dialogflow = require('dialogflow');
 
 const config = {
   credentials: {
-    private_key: process.env.DIALOGFLOW_PRIVATE_KEY,
-    client_email: process.env.DIALOGFLOW_CLIENT_EMAIL
+    'private_key': process.env.DIALOGFLOW_PRIVATE_KEY,
+    'client_email': process.env.DIALOGFLOW_CLIENT_EMAIL
   }
 };
-
-console.log(config.credentials.client_email);
 
 const sessionClient = new dialogflow.SessionsClient(config);
 
